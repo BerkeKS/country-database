@@ -54,7 +54,8 @@ Future<List<CountryMini>> getBasicInfo(String continent) async {
               ? (c['capital'] as List<dynamic>).cast<String>()
               : ["None"],
           population: thousandDigit(c["population"].toString()),
-          continents: (c["continents"] as List<dynamic>).cast<String>());
+          continents: (c["continents"] as List<dynamic>).cast<String>(),
+          alpha: c["cca2"]);
       countries.add(mini);
     }
     if (continent == "asia") {
@@ -71,7 +72,8 @@ Future<List<CountryMini>> getBasicInfo(String continent) async {
                 ? (c['capital'] as List<dynamic>).cast<String>()
                 : ["None"],
             population: thousandDigit(c["population"].toString()),
-            continents: (c["continents"] as List<dynamic>).cast<String>());
+            continents: (c["continents"] as List<dynamic>).cast<String>(),
+            alpha: c["cca2"]);
         countries.add(mini);
       }
       countries.sort((a, b) => a.name.compareTo(b.name));
