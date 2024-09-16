@@ -140,9 +140,9 @@ Future<List<LatLong>> getLocation(BuildContext context) async {
   }
 }
 
-Future<Country> getCountry(BuildContext context, String countryName) async {
+Future<Country> getCountry(BuildContext context, String countryCode) async {
   var response = await http
-      .get(Uri.parse("https://restcountries.com/v3.1/name/${countryName}"));
+      .get(Uri.parse("https://restcountries.com/v3.1/alpha/${countryCode}"));
   if (response.statusCode == 200) {
     var jsonResponse = jsonDecode(utf8.decode(response.bodyBytes));
     late Country country;
@@ -205,9 +205,9 @@ Stream<List<String>> streamLocalTime(String area) =>
     Stream.periodic(const Duration(seconds: 1))
         .asyncMap((_) => getLocalTime(area));
 
-void openWikipedia(BuildContext context, String country) async {
-  var response =
-      await http.get(Uri.parse("https://restcountries.com/v3.1/name/$country"));
+void openWikipedia(BuildContext context, String countryCode) async {
+  var response = await http
+      .get(Uri.parse("https://restcountries.com/v3.1/alpha/$countryCode"));
   if (response.statusCode == 200) {
     var jsonResponse = jsonDecode(utf8.decode(response.bodyBytes));
     String countryName = "";
@@ -225,9 +225,9 @@ void openWikipedia(BuildContext context, String country) async {
   }
 }
 
-void getMap(BuildContext context, String country) async {
-  var response =
-      await http.get(Uri.parse("https://restcountries.com/v3.1/name/$country"));
+void getMap(BuildContext context, String countryCode) async {
+  var response = await http
+      .get(Uri.parse("https://restcountries.com/v3.1/alpha/$countryCode"));
   if (response.statusCode == 200) {
     var jsonResponse = jsonDecode(utf8.decode(response.bodyBytes));
     String mapLink = "";
