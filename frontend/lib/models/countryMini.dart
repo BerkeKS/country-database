@@ -5,6 +5,7 @@ class CountryMini {
   String population;
   List<String> continents;
   String? backgroundImage;
+  String alpha;
 
   CountryMini(
       {required this.name,
@@ -12,5 +13,6 @@ class CountryMini {
       this.capital,
       required this.population,
       required this.continents,
-      this.backgroundImage});
+      this.backgroundImage,
+      required this.alpha});
 }
