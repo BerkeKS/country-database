@@ -1,5 +1,3 @@
-import 'package:country_data/database.dart';
-
 import '../models/countryMini.dart';
 import '../utils/service.dart';
 import '../views/countryPage.dart';
