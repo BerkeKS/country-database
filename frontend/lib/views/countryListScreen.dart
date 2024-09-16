@@ -256,15 +256,8 @@ class CountryList extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => CountryPage(
-                                                  country: (countryConverter
-                                                          .containsKey(snapshot
-                                                              .data![index]
-                                                              .name))
-                                                      ? countryConverter[
-                                                          snapshot.data![index]
-                                                              .name]!
-                                                      : snapshot
-                                                          .data![index].name),
+                                                  country: (snapshot
+                                                      .data![index].alpha)),
                                             ));
                                       },
                                       icon: const Icon(
