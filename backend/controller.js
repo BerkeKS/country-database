@@ -30,7 +30,12 @@ const addCountries = async(req, res) => {
 const getCountry = async (req, res) => {
     var countryName = req.params
     country.findById("66e9534678952d9215828276")
-    .then((doc) => console.log(doc)).catch((err) => console.log(err))
+    .then((document) => {
+        return res.status(200).json({
+            doc : document
+        })
+    })
+    //.then((doc) => console.log(doc)).catch((err) => console.log(err))
     /*
     if (!responseCountry) {
         return res.status(404).json({
