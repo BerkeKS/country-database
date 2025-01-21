@@ -35,6 +35,11 @@ const getCountry = async (req, res) => {
             doc : document
         })
     })
+    .catch((error) => {
+        return res.status(400).json({
+            err : error
+        })
+    })
     //.then((doc) => console.log(doc)).catch((err) => console.log(err))
     /*
     if (!responseCountry) {
