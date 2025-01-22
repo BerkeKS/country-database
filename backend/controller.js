@@ -17,6 +17,7 @@ const addCountries = async(req, res) => {
             intro: countryIntro,
             timezone: countryTimezone,
             images: value,
+            attractions: [],
             soccerLeagues: leagueArray
         })
         await ctr.save()
