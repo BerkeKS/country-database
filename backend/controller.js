@@ -1,7 +1,7 @@
 const images = require("./map").images
 const timezones = require("./map").timezones
 const soccerLeagues = require("./map").soccerLeagues
-const country = require("./schema")
+const country = require("./models/country")
 
 /*
 const addCountries = async(req, res) => {
