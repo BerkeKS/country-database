@@ -3,7 +3,7 @@ const timezones = require("./map").timezones
 const soccerLeagues = require("./map").soccerLeagues
 const country = require("./models/country")
 
-/*
+//For database updates - NOT accessible from frontend
 const addCountries = async(req, res) => {
     images.forEach(async (value, key) => {
         var leagueArray = []
@@ -25,7 +25,6 @@ const addCountries = async(req, res) => {
         message: "Added!"
     })
 }
-    */
 
 const getCountry = async (req, res) => {
     var countryName = req.params
