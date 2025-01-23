@@ -1,6 +1,7 @@
 const images = require("./map").images
 const timezones = require("./map").timezones
 const soccerLeagues = require("./map").soccerLeagues
+const attraction = require("./models/attraction")
 const country = require("./models/country")
 
 //For database updates - NOT accessible from frontend
@@ -52,4 +53,22 @@ const getCountry = async (req, res) => {
     })
         */
 }
-module.exports = {getCountry}
+
+//For database updates - NOT accessible from frontend
+const addAttraction = async (req, res) => {
+    try {
+        const place = await attraction.findById("6792709243240507ce62c6c2")
+        await country.findOneAndUpdate(
+            {_id: "66e9534678952d9215828276"},
+            {$addToSet: {attractions : place}}
+        )
+        return res.status(200).json({
+            message: "Added!"
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message : error
+        })
+    }
+}
+module.exports = {getCountry, addAttraction}
