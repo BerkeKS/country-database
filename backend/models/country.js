@@ -1,29 +1,22 @@
-const { default: mongoose } = require("mongoose")
-const { soccerLeagues } = require("../map")
+const { default: mongoose, Schema } = require("mongoose")
 
 const schema = require("mongoose").Schema
 
 const countrySchema = new schema ({
-    name: {
-    },
-
-    intro: {
-        type: String
-    },
-
-    timezone: {
-        type: String,
-    },
+    name: String,
+    intro: String,
+    timezone: String,
 
     images: {
         type: Array,
         required: true
     },
 
-    attractions: {
-        type : Array,
-        default : []
-    },
+    attractions: [{
+        //Equal to DBRef annotation in Java Spring Boot
+        type: "ObjectId", 
+        ref: 'Attraction'
+    }],
 
     soccerLeagues: {
         type: Array,
