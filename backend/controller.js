@@ -42,17 +42,27 @@ const getCountry = async (req, res) => {
             err : error
         })
     })
-    //.then((doc) => console.log(doc)).catch((err) => console.log(err))
-    /*
-    if (!responseCountry) {
-        return res.status(404).json({
-            message : "No country found"
-        })
-    }
-    return res.status(200).json({
-        message : responseCountry.name
+}
+
+const createAttraction = async (req, res) => {
+    const {name, description, address, image} = req.body
+    const attr = new attraction({
+        name : name,
+        description : description,
+        address : address,
+        image : image
     })
-        */
+    await attr.save()
+    .then(() => {
+        return res.status(200).json({
+            message : "Attraction created!"
+        })
+    })
+    .catch((error) => {
+        return res.status(400).json({
+            message : error
+        })
+    })
 }
 
 //For database updates - NOT accessible from frontend
@@ -73,4 +83,4 @@ const addAttraction = async (req, res) => {
         })
     }
 }
-module.exports = {getCountry, addAttraction}
+module.exports = {getCountry, createAttraction, addAttraction}
