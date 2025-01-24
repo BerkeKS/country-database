@@ -29,8 +29,8 @@ const addCountries = async(req, res) => {
 }
 
 const getCountry = async (req, res) => {
-    var country_id = req.params
-    country.findById(country_id)
+    var countryName = req.body
+    await country.findOne({name: countryName})
     .populate("attractions")
     .then((document) => {
         return res.status(200).json({
@@ -44,6 +44,7 @@ const getCountry = async (req, res) => {
     })
 }
 
+//For database updates - NOT accessible from frontend
 const createAttraction = async (req, res) => {
     const {name, description, address, image} = req.body
     const attr = new attraction({
