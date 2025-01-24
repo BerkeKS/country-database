@@ -29,8 +29,8 @@ const addCountries = async(req, res) => {
 }
 
 const getCountry = async (req, res) => {
-    var countryName = req.params
-    country.findById("66e9534678952d9215828276")
+    var country_id = req.params
+    country.findById(country_id)
     .populate("attractions")
     .then((document) => {
         return res.status(200).json({
@@ -57,10 +57,11 @@ const getCountry = async (req, res) => {
 
 //For database updates - NOT accessible from frontend
 const addAttraction = async (req, res) => {
+    const {country_id, attraction_id} = req.params
     try {
-        const place = await attraction.findById("6792709243240507ce62c6c2")
+        const place = await attraction.findById(attraction_id)
         await country.findOneAndUpdate(
-            {_id: "66e9534678952d9215828276"},
+            {_id: country_id},
             {$addToSet: {attractions : place}}
         )
         return res.status(200).json({
