@@ -57,7 +57,7 @@ const getCountry = async (req, res) => {
 
 //For database updates - NOT accessible from frontend
 const addAttraction = async (req, res) => {
-    const {country_id, attraction_id} = req.params
+    const {country_id, attraction_id} = req.body
     try {
         const place = await attraction.findById(attraction_id)
         await country.findOneAndUpdate(
